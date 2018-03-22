@@ -62,21 +62,6 @@ app.get('/', function (req, res) {
  
   });
 
-
-///////////////////////////////////////////
-
-app.post('/ajax_modifier', (req,res) => {
-   req.body._id = ObjectID(req.body._id)
-
-   db.collection('adresse').save(req.body, (err, result) => {
-   if (err) return console.log(err)
-       console.log('sauvegarder dans la BD')
-   res.send(JSON.stringify(req.body));
-   // res.status(204)
-   })
-})
-
-
 //////////////////////////////////////////  Route Adresse
 app.get('/adresse', function (req, res) {
    var cursor = db.collection('adresse')
