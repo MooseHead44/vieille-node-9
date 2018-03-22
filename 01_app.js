@@ -152,3 +152,11 @@ app.post('/ajax_ajouter', (req,res) => {
     res.send(JSON.stringify(req.body));
  });
 });
+
+app.post('/ajax_detruire/', (req, res) => {
+ db.collection('adresse');
+ .findOneAndDelete({"_id": ObjectID(req.body._id)}, (err, resultat) => {
+if (err) return console.log(err);
+ res.send(JSON.stringify(resultat))  // redirige vers la route qui affiche la collection
+ });
+});
