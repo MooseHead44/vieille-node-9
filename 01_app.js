@@ -138,4 +138,10 @@ app.get('/vider', (req, res) => {
 	res.redirect('/adresse')
 })
 
-
+app.post('/ajax_modifier', (req,res) => {
+    req.body._id =  ObjectID(req.body._id);
+    db.collection('adresse').save(req.body, (err, result) => {
+         if (err) return console.log(err)
+         res.send(JSON.stringify(req.body))
+   });
+})
