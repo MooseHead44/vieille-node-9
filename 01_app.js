@@ -10,13 +10,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 const i18n = require('i18n');
 const cookieParser = require('cookie-parser');
-///////////////////////////////////////////////////////////////
-
-app.use(bodyParser.json());
-
-
-
-
 
 /* Ajoute l'objet i18n à l'objet global «res» */
 app.use(cookieParser());
@@ -27,7 +20,6 @@ i18n.configure({
    cookie : 'langueChoisie', 
    directory : __dirname + '/locales' })
 
-
 let db // variable qui contiendra le lien sur la BD
 
 MongoClient.connect('mongodb://127.0.0.1:27017', (err, database) => {
@@ -36,7 +28,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017', (err, database) => {
 console.log('connexion à la BD')
 // lancement du serveur Express sur le port 8081
  app.listen(8081, (err) => {
- 	if (err) console.log(err)
+  if (err) console.log(err)
  console.log('connexion à la BD et on écoute sur le port 8081')
  })
 })
