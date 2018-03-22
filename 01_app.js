@@ -145,3 +145,10 @@ app.post('/ajax_modifier', (req,res) => {
          res.send(JSON.stringify(req.body))
    });
 })
+
+app.post('/ajax_ajouter', (req,res) => {  
+ db.collection('adresse').save(req.body, (err, result) => {
+ if (err) return console.log(err)
+    res.send(JSON.stringify(req.body));
+ });
+});
